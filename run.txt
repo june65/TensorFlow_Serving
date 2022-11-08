@@ -1,0 +1,1 @@
+docker run -t --rm -p 8501:8501 -v "C:/Users/82108/Desktop/TensorFlow_Serving/saved_model:/models/fashion_model" -e MODEL_NAME=fashion_model tensorflow/serving
