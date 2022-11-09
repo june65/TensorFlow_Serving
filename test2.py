@@ -14,6 +14,8 @@ test_image = tf.keras.utils.img_to_array(test_image)
 test_image = test_image.reshape((1, test_image.shape[0], test_image.shape[1], test_image.shape[2]))
 test_image = preprocess_input(test_image)
 
+class_names = ['dog','animal','cat','landscape','product','people']
+
 
 data = json.dumps({"signature_name": "serving_default", "instances": test_image.tolist()})
 
@@ -26,4 +28,4 @@ prediction = json.loads(json_response.text)['predictions']
 df = pd.DataFrame({'pred':prediction[0]})
 df = df.sort_values(by='pred', ascending=False, na_position='first')
 print(f"## 예측률 : {(df.iloc[0]['pred'])* 100:.2f}%")
-print([df[df == df.iloc[0]].index[0]])
+print(class_names[df[df == df.iloc[0]].index[0]])
