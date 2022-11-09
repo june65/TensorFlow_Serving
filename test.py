@@ -29,7 +29,7 @@ print('test_images.shape: {}, of {}'.format(test_images.shape, test_images.dtype
 rando = random.randint(0,len(test_images)-1)
 show(rando, 'An Example Image: {}'.format(class_names[test_labels[rando]]))
 
-data = json.dumps({"signature_name": "serving_default", "instances": test_images[0:3].tolist()})
+data = json.dumps({"signature_name": "serving_default", "instances": test_images[0].tolist()})
 print('Data: {} ... {}'.format(data[:50], data[len(data)-52:]))
 
 
